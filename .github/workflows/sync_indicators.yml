@@ -1,0 +1,83 @@
+name: Sync Indicators Data
+
+on:
+  # 手动触发
+  workflow_dispatch:
+  # 定时触发 (北京时间 18:00)
+  schedule:
+    - cron: '0 10 * * 1-5'  # UTC 10:00 = 北京时间 18:00
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Create config file
+        run: |
+          cat > config/config.yaml << EOF
+          tushare:
+            token: "${{ secrets.TUSHARE_TOKEN }}"
+
+          feishu:
+            app_id: "${{ secrets.FEISHU_APP_ID }}"
+            app_secret: "${{ secrets.FEISHU_APP_SECRET }}"
+            bitable:
+              app_token: "${{ secrets.FEISHU_APP_TOKEN }}"
+              table_id: "${{ secrets.FEISHU_TABLE_ID }}"
+              code_column: "代码"
+              type_column: "股票类型"
+
+          field_mapping:
+            "日线J": "daily_kdj_j"
+            "日线CCI": "daily_cci"
+            "日线BOLL": "daily_boll_middle"
+            "日线BOLL上轨": "daily_boll_upper"
+            "日线BOLL下轨": "daily_boll_lower"
+            "日收盘价": "close"
+            "周线J": "weekly_kdj_j"
+            "周线CCI": "weekly_cci"
+            "周线BOLL": "weekly_boll_middle"
+            "周线BOLL上轨": "weekly_boll_upper"
+            "周线BOLL下轨": "weekly_boll_lower"
+            "周收盘价": "weekly_close"
+            "月线J": "monthly_kdj_j"
+            "月线CCI": "monthly_cci"
+            "月线BOLL": "monthly_boll_middle"
+            "月线BOLL上轨": "monthly_boll_upper"
+            "月线BOLL下轨": "monthly_boll_lower"
+            "月收盘价": "monthly_close"
+            "更新时间": "trade_date"
+
+          sync:
+            history_days: 500
+            indicators:
+              kdj:
+                n: 9
+                m1: 3
+                m2: 3
+              cci:
+                n: 14
+              boll:
+                n: 20
+                k: 2
+
+          cache:
+            enabled: true
+            dir: "data/cache"
+          EOF
+
+      - name: Run indicators sync
+        run: python main.py

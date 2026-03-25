@@ -1,0 +1,29 @@
+# ============================================================
+# 价格同步配置文件模板
+# 复制此文件为 config_price.yaml 并填入实际值
+# ============================================================
+
+tushare:
+  token: "your_tushare_token"
+
+feishu:
+  app_id: "your_app_id"
+  app_secret: "your_app_secret"
+  bitable:
+    app_token: "your_app_token"
+    table_id: "your_table_id"
+    code_column: "代码"
+    type_column: "股票类型"
+    status_column: "交易状态"
+    hold_status: "持仓"
+
+field_mapping:
+  "最新价格": "close"
+  "日涨幅": "pct_chg"
+  "更新时间": "trade_date"
+
+sync:
+  history_days: 5
+
+cache:
+  enabled: false

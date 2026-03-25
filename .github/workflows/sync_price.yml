@@ -1,0 +1,58 @@
+name: Sync Price Data
+
+on:
+  # 手动触发
+  workflow_dispatch:
+  # 定时触发 (北京时间 18:00)
+  schedule:
+    - cron: '0 10 * * 1-5'  # UTC 10:00 = 北京时间 18:00
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Create config file
+        run: |
+          cat > config/config_price.yaml << EOF
+          tushare:
+            token: "${{ secrets.TUSHARE_TOKEN }}"
+
+          feishu:
+            app_id: "${{ secrets.FEISHU_APP_ID }}"
+            app_secret: "${{ secrets.FEISHU_APP_SECRET }}"
+            bitable:
+              app_token: "${{ secrets.FEISHU_APP_TOKEN_PRICE }}"
+              table_id: "${{ secrets.FEISHU_TABLE_ID_PRICE }}"
+              code_column: "代码"
+              type_column: "股票类型"
+              status_column: "交易状态"
+              hold_status: "持仓"
+
+          field_mapping:
+            "最新价格": "close"
+            "日涨幅": "pct_chg"
+            "更新时间": "trade_date"
+
+          sync:
+            history_days: 5
+
+          cache:
+            enabled: false
+          EOF
+
+      - name: Run price sync
+        run: python main_price.py
