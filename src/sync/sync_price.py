@@ -3,13 +3,14 @@
 import yaml
 import time
 from pathlib import Path
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, List, Optional
 from dataclasses import dataclass, field
 from datetime import datetime
 
 from ..feishu import FeishuClient, BitableClient
 from ..tushare_api import TushareDataFetcher
 from ..tushare_api.fetcher import normalize_code
+from ..utils import RateLimiter
 
 
 @dataclass
@@ -68,11 +69,9 @@ class PriceSynchronizer:
         self.status_column = self.config["feishu"]["bitable"].get("status_column", "交易状态")
         self.hold_status = self.config["feishu"]["bitable"].get("hold_status", "持仓")
 
-        # 速率限制配置 (港股每分钟最多2次请求)
-        self.rate_limit_config = self.config.get("rate_limit", {})
-        self.hk_stock_interval = self.rate_limit_config.get("hk_stock_interval", 31)  # 港股请求间隔(秒)
-        self.last_hk_request_time = 0  # 上次港股请求时间
-        self.hk_request_count = 0  # 港股请求计数器
+        # 速率限制器
+        rate_limit_config = self.config.get("rate_limit", {})
+        self.rate_limiter = RateLimiter(rate_limit_config)
 
     def _load_config(self, config_path: str) -> dict:
         """加载配置文件"""
@@ -164,35 +163,6 @@ class PriceSynchronizer:
         print(f"📋 共获取到 {len(securities)} 个证券")
         return securities
 
-    def _is_hk_stock(self, ts_code: str) -> bool:
-        """判断是否是港股"""
-        return ts_code.endswith(".HK")
-
-    def _wait_for_rate_limit(self, ts_code: str):
-        """
-        根据证券类型进行速率限制等待
-
-        Args:
-            ts_code: 证券代码
-        """
-        if self._is_hk_stock(ts_code):
-            current_time = time.time()
-
-            # 第一个港股请求也需要等待，防止之前有其他请求触发限制
-            if self.hk_request_count == 0:
-                print(f"\n    ⏳ 港股首次请求，等待 {self.hk_stock_interval} 秒确保速率限制...", end="")
-                time.sleep(self.hk_stock_interval)
-            else:
-                elapsed = current_time - self.last_hk_request_time
-
-                if elapsed < self.hk_stock_interval:
-                    wait_time = self.hk_stock_interval - elapsed
-                    print(f"\n    ⏳ 港股速率限制，等待 {wait_time:.1f} 秒...", end="")
-                    time.sleep(wait_time)
-
-            self.last_hk_request_time = time.time()
-            self.hk_request_count += 1
-
     def get_latest_price(self, ts_code: str, sec_type: str, retry_count: int = 0) -> Optional[Dict]:
         """
         获取最新价格数据
@@ -276,7 +246,7 @@ class PriceSynchronizer:
                 continue
 
             # 速率限制等待
-            self._wait_for_rate_limit(code)
+            self.rate_limiter.wait_if_needed(code)
 
             price_data = self.get_latest_price(code, sec_type)
 

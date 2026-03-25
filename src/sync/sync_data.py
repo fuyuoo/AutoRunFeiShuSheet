@@ -11,7 +11,7 @@ from ..feishu import FeishuClient, BitableClient
 from ..tushare_api import TushareDataFetcher
 from ..tushare_api.fetcher import normalize_code
 from ..indicators import calculate_indicators_for_security
-from ..utils import aggregate_to_weekly, aggregate_to_monthly
+from ..utils import aggregate_to_weekly, aggregate_to_monthly, RateLimiter
 
 
 @dataclass
@@ -69,11 +69,9 @@ class DataSynchronizer:
         self.code_column = self.config["feishu"]["bitable"].get("code_column", "证券代码")
         self.type_column = self.config["feishu"]["bitable"].get("type_column", "类型")
 
-        # 速率限制配置 (港股每分钟最多2次请求)
-        self.rate_limit_config = self.config.get("rate_limit", {})
-        self.hk_stock_interval = self.rate_limit_config.get("hk_stock_interval", 31)  # 港股请求间隔(秒)
-        self.last_hk_request_time = 0  # 上次港股请求时间
-        self.hk_request_count = 0  # 港股请求计数器
+        # 速率限制器
+        rate_limit_config = self.config.get("rate_limit", {})
+        self.rate_limiter = RateLimiter(rate_limit_config)
 
     def _load_config(self, config_path: str) -> dict:
         """加载配置文件"""
@@ -171,35 +169,6 @@ class DataSynchronizer:
 
         print(f"📋 共获取到 {len(securities)} 个证券")
         return securities
-
-    def _is_hk_stock(self, ts_code: str) -> bool:
-        """判断是否是港股"""
-        return ts_code.endswith(".HK")
-
-    def _wait_for_rate_limit(self, ts_code: str):
-        """
-        根据证券类型进行速率限制等待
-
-        Args:
-            ts_code: 证券代码
-        """
-        if self._is_hk_stock(ts_code):
-            current_time = time.time()
-
-            # 第一个港股请求也需要等待，防止之前有其他请求触发限制
-            if self.hk_request_count == 0:
-                print(f"\n    ⏳ 港股首次请求，等待 {self.hk_stock_interval} 秒确保速率限制...", end="")
-                time.sleep(self.hk_stock_interval)
-            else:
-                elapsed = current_time - self.last_hk_request_time
-
-                if elapsed < self.hk_stock_interval:
-                    wait_time = self.hk_stock_interval - elapsed
-                    print(f"\n    ⏳ 港股速率限制，等待 {wait_time:.1f} 秒...", end="")
-                    time.sleep(wait_time)
-
-            self.last_hk_request_time = time.time()
-            self.hk_request_count += 1
 
     def process_security(self, ts_code: str, sec_type: str, retry_count: int = 0) -> Tuple[Optional[Dict], bool, bool, bool]:
         """
@@ -301,6 +270,9 @@ class DataSynchronizer:
             code = sec["code"]
             sec_type = sec["type"]
             print(f"  [{i}/{len(securities)}] 处理 {code} ({sec_type})...", end=" ")
+
+            # 速率限制等待
+            self.rate_limiter.wait_if_needed(code)
 
             indicators, has_daily, has_weekly, has_monthly = self.process_security(code, sec_type)
 
