@@ -67,7 +67,6 @@ class DataSynchronizer:
         self.history_days = self.config.get("sync", {}).get("history_days", 120)
         self.indicator_config = self.config.get("sync", {}).get("indicators", {})
         self.code_column = self.config["feishu"]["bitable"].get("code_column", "证券代码")
-        self.type_column = self.config["feishu"]["bitable"].get("type_column", "类型")
 
         # 速率限制器
         rate_limit_config = self.config.get("rate_limit", {})
@@ -155,7 +154,6 @@ class DataSynchronizer:
         for record in records:
             fields = record.get("fields", {})
             code = fields.get(self.code_column, "")
-            sec_type = fields.get(self.type_column, "股票")
 
             if code:
                 # 标准化代码格式 (如 "399303" -> "399303.SZ")
@@ -164,7 +162,6 @@ class DataSynchronizer:
                     "record_id": record["record_id"],
                     "code": normalized_code,
                     "original_code": str(code),
-                    "type": str(sec_type)
                 })
 
         print(f"📋 共获取到 {len(securities)} 个证券")
@@ -268,7 +265,8 @@ class DataSynchronizer:
 
         for i, sec in enumerate(securities, 1):
             code = sec["code"]
-            sec_type = sec["type"]
+            # 自动识别证券类型
+            sec_type = self.tushare.detect_security_type(code)
             print(f"  [{i}/{len(securities)}] 处理 {code} ({sec_type})...", end=" ")
 
             # 速率限制等待

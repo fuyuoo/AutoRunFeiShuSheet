@@ -29,6 +29,10 @@ def normalize_code(code: str) -> str:
         hk_code = code[2:].zfill(5)  # 去掉HK前缀，补齐5位
         return f"{hk_code}.HK"
 
+    # 北交所代码 (899xxx)
+    if code.startswith("899"):
+        return f"{code}.BJ"
+
     # 格式2: 5位纯数字 -> 港股
     if len(code) == 5 and code.isdigit():
         return f"{code}.HK"
@@ -362,6 +366,10 @@ class TushareDataFetcher:
         # 港股
         if market == "HK":
             return "hk"
+
+        # 北交所
+        if market == "BJ":
+            return "index"
 
         # ETF基金代码规则 (51/52/56/58开头是上交所ETF, 15/16开头是深交所ETF)
         if code.startswith(("51", "52", "56", "58")) and market == "SH":

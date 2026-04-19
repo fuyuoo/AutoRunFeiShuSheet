@@ -58,13 +58,13 @@ def calculate_cci(df: pd.DataFrame, n: int = 14) -> pd.Series:
         return pd.Series()
 
     tp = (df["high"] + df["low"] + df["close"]) / 3
-    ma_tp = tp.rolling(window=n, min_periods=1).mean()
+    ma_tp = tp.rolling(window=n, min_periods=n).mean()
 
     # 计算平均绝对偏差
     def mad(x):
         return np.abs(x - x.mean()).mean() if len(x) > 0 else 0
 
-    md = tp.rolling(window=n, min_periods=1).apply(mad)
+    md = tp.rolling(window=n, min_periods=n).apply(mad)
 
     # 避免除零
     cci = (tp - ma_tp) / (0.015 * md.replace(0, np.nan))
@@ -91,8 +91,8 @@ def calculate_boll(
     if df.empty:
         return pd.Series(), pd.Series(), pd.Series()
 
-    middle = df["close"].rolling(window=n, min_periods=1).mean()
-    std = df["close"].rolling(window=n, min_periods=1).std()
+    middle = df["close"].rolling(window=n, min_periods=n).mean()
+    std = df["close"].rolling(window=n, min_periods=n).std(ddof=0)
 
     upper = middle + k * std
     lower = middle - k * std
@@ -192,6 +192,9 @@ def calculate_indicators_for_security(
         # 添加最新交易信息
         latest = daily_df.iloc[-1]
         result["close"] = float(latest["close"])
+        result["pct_chg"] = float(latest.get("pct_chg", 0)) / 100
+        result["high"] = float(latest["high"])
+        result["low"] = float(latest["low"])
         result["trade_date"] = str(latest["trade_date"])
 
     # 计算周线指标
