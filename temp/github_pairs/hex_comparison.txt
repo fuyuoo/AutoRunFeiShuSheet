@@ -1,0 +1,513 @@
+=== 净资产收益率.tn6 (6360 bytes) ===
+0000: 3f 8a 19 97 6d a1 36 14 94 2f 1d 29 a7 7a a8 2d  ?...m.6../.).z.-
+0010: 00 f7 36 f3 88 94 69 06 99 2e 77 77 de 5b 4f bb  ..6...i...ww.[O.
+0020: 00 f7 36 f3 88 94 69 06 00 f7 36 f3 88 94 69 06  ..6...i...6...i.
+0030: 04 8b 96 93 25 bd 36 8d ca e6 3e 72 4f dc 8c d9  ....%.6...>rO...
+0040: 00 f7 36 f3 88 94 69 06 00 f7 36 f3 88 94 69 06  ..6...i...6...i.
+0050: 00 f7 36 f3 88 94 69 06 00 f7 36 f3 88 94 69 06  ..6...i...6...i.
+0060: 00 f7 36 f3 88 94 69 06 00 f7 36 f3 88 94 69 06  ..6...i...6...i.
+0070: 03 6f 43 0b 02 32 b9 ab 3e a7 bf 36 c2 89 81 83  .oC..2..>..6....
+0080: 00 f7 36 f3 88 94 69 06 6e 3a 93 9a 1f 24 db 7b  ..6...i.n:...$.{
+0090: a6 00 fb 48 de 9c b7 c1 d3 2d 10 df 72 fc 0a 62  ...H.....-..r..b
+00a0: d3 2d 10 df 72 fc 0a 62 d3 2d 10 df 72 fc 0a 62  .-..r..b.-..r..b
+00b0: d3 2d 10 df 72 fc 0a 62 d3 2d 10 df 72 fc 0a 62  .-..r..b.-..r..b
+00c0: d3 2d 10 df 72 fc 0a 62 d3 2d 10 df 72 fc 0a 62  .-..r..b.-..r..b
+00d0: d3 2d 10 df 72 fc 0a 62 d3 2d 10 df 72 fc 0a 62  .-..r..b.-..r..b
+00e0: d3 2d 10 df 72 fc 0a 62 d3 2d 10 df 72 fc 0a 62  .-..r..b.-..r..b
+00f0: d3 2d 10 df 72 fc 0a 62 2b 0b fe 5b ba d3 22 64  .-..r..b+..[.."d
+
+=== 市净率.tn6 (6360 bytes) ===
+0000: 3f 8a 19 97 6d a1 36 14 94 2f 1d 29 a7 7a a8 2d  ?...m.6../.).z.-
+0010: 00 f7 36 f3 88 94 69 06 99 2e 77 77 de 5b 4f bb  ..6...i...ww.[O.
+0020: 00 f7 36 f3 88 94 69 06 00 f7 36 f3 88 94 69 06  ..6...i...6...i.
+0030: 0e 47 32 0a 63 28 cf de 20 fb 05 95 43 23 be 03  .G2.c(.. ...C#..
+0040: 00 f7 36 f3 88 94 69 06 00 f7 36 f3 88 94 69 06  ..6...i...6...i.
+0050: 00 f7 36 f3 88 94 69 06 00 f7 36 f3 88 94 69 06  ..6...i...6...i.
+0060: 00 f7 36 f3 88 94 69 06 00 f7 36 f3 88 94 69 06  ..6...i...6...i.
+0070: 03 6f 43 0b 02 32 b9 ab ff 26 e8 8f 6b c9 6b 95  .oC..2...&..k.k.
+0080: 00 f7 36 f3 88 94 69 06 ee 46 79 26 ea 0f ea 37  ..6...i..Fy&...7
+0090: ea f5 47 a1 a9 ee 1c 47 08 83 96 0d a9 e0 bf 67  ..G....G.......g
+00a0: 08 83 96 0d a9 e0 bf 67 6c 87 48 1b 24 eb 34 9d  .......gl.H.$.4.
+00b0: 08 83 96 0d a9 e0 bf 67 08 83 96 0d a9 e0 bf 67  .......g.......g
+00c0: 08 83 96 0d a9 e0 bf 67 08 83 96 0d a9 e0 bf 67  .......g.......g
+00d0: 08 83 96 0d a9 e0 bf 67 08 83 96 0d a9 e0 bf 67  .......g.......g
+00e0: 08 83 96 0d a9 e0 bf 67 08 83 96 0d a9 e0 bf 67  .......g.......g
+00f0: 08 83 96 0d a9 e0 bf 67 10 37 8c 70 09 0f 74 65  .......g.7.p..te
+
+=== 市盈率.tn6 (6440 bytes) ===
+0000: 3f 8a 19 97 6d a1 36 14 94 2f 1d 29 a7 7a a8 2d  ?...m.6../.).z.-
+0010: 00 f7 36 f3 88 94 69 06 99 2e 77 77 de 5b 4f bb  ..6...i...ww.[O.
+0020: 00 f7 36 f3 88 94 69 06 00 f7 36 f3 88 94 69 06  ..6...i...6...i.
+0030: 63 37 04 f1 e5 66 49 a1 20 fb 05 95 43 23 be 03  c7...fI. ...C#..
+0040: 00 f7 36 f3 88 94 69 06 00 f7 36 f3 88 94 69 06  ..6...i...6...i.
+0050: 00 f7 36 f3 88 94 69 06 00 f7 36 f3 88 94 69 06  ..6...i...6...i.
+0060: 00 f7 36 f3 88 94 69 06 00 f7 36 f3 88 94 69 06  ..6...i...6...i.
+0070: 03 6f 43 0b 02 32 b9 ab 85 f8 17 c0 60 15 84 95  .oC..2......`...
+0080: 00 f7 36 f3 88 94 69 06 c0 60 f1 3e c4 56 48 c8  ..6...i..`.>.VH.
+0090: d9 59 53 68 7b 60 97 6b d3 2d 10 df 72 fc 0a 62  .YSh{`.k.-..r..b
+00a0: d3 2d 10 df 72 fc 0a 62 d3 2d 10 df 72 fc 0a 62  .-..r..b.-..r..b
+00b0: d3 2d 10 df 72 fc 0a 62 d3 2d 10 df 72 fc 0a 62  .-..r..b.-..r..b
+00c0: d3 2d 10 df 72 fc 0a 62 d3 2d 10 df 72 fc 0a 62  .-..r..b.-..r..b
+00d0: d3 2d 10 df 72 fc 0a 62 d3 2d 10 df 72 fc 0a 62  .-..r..b.-..r..b
+00e0: d3 2d 10 df 72 fc 0a 62 d3 2d 10 df 72 fc 0a 62  .-..r..b.-..r..b
+00f0: d3 2d 10 df 72 fc 0a 62 2b 0b fe 5b ba d3 22 64  .-..r..b+..[.."d
+
+=== BYTE DIFFERENCES ===
+  Offset 0030 (0x0030): 04 0e 63
+  Offset 0031 (0x0031): 8b 47 37
+  Offset 0032 (0x0032): 96 32 04
+  Offset 0033 (0x0033): 93 0a f1
+  Offset 0034 (0x0034): 25 63 e5
+  Offset 0035 (0x0035): bd 28 66
+  Offset 0036 (0x0036): 36 cf 49
+  Offset 0037 (0x0037): 8d de a1
+  Offset 0038 (0x0038): ca 20 20
+  Offset 0039 (0x0039): e6 fb fb
+  Offset 003a (0x003a): 3e 05 05
+  Offset 003b (0x003b): 72 95 95
+  Offset 003c (0x003c): 4f 43 43
+  Offset 003d (0x003d): dc 23 23
+  Offset 003e (0x003e): 8c be be
+  Offset 003f (0x003f): d9 03 03
+  Offset 0078 (0x0078): 3e ff 85
+  Offset 0079 (0x0079): a7 26 f8
+  Offset 007a (0x007a): bf e8 17
+  Offset 007b (0x007b): 36 8f c0
+  Offset 007c (0x007c): c2 6b 60
+  Offset 007d (0x007d): 89 c9 15
+  Offset 007e (0x007e): 81 6b 84
+  Offset 007f (0x007f): 83 95 95
+  Offset 0088 (0x0088): 6e ee c0
+  Offset 0089 (0x0089): 3a 46 60
+  Offset 008a (0x008a): 93 79 f1
+  Offset 008b (0x008b): 9a 26 3e
+  Offset 008c (0x008c): 1f ea c4
+  Offset 008d (0x008d): 24 0f 56
+  Offset 008e (0x008e): db ea 48
+  Offset 008f (0x008f): 7b 37 c8
+  Offset 0090 (0x0090): a6 ea d9
+  Offset 0091 (0x0091): 00 f5 59
+  Offset 0092 (0x0092): fb 47 53
+  Offset 0093 (0x0093): 48 a1 68
+  Offset 0094 (0x0094): de a9 7b
+  Offset 0095 (0x0095): 9c ee 60
+  Offset 0096 (0x0096): b7 1c 97
+  Offset 0097 (0x0097): c1 47 6b
+  Offset 0098 (0x0098): d3 08 d3
+  Offset 0099 (0x0099): 2d 83 2d
+  Offset 009a (0x009a): 10 96 10
+  Offset 009b (0x009b): df 0d df
+  Offset 009c (0x009c): 72 a9 72
+  Offset 009d (0x009d): fc e0 fc
+  Offset 009e (0x009e): 0a bf 0a
+  Offset 009f (0x009f): 62 67 62
+  Offset 00a0 (0x00a0): d3 08 d3
+  Offset 00a1 (0x00a1): 2d 83 2d
+  Offset 00a2 (0x00a2): 10 96 10
+  Offset 00a3 (0x00a3): df 0d df
+  Offset 00a4 (0x00a4): 72 a9 72
+  Offset 00a5 (0x00a5): fc e0 fc
+  Offset 00a6 (0x00a6): 0a bf 0a
+  Offset 00a7 (0x00a7): 62 67 62
+  Offset 00a8 (0x00a8): d3 6c d3
+  Offset 00a9 (0x00a9): 2d 87 2d
+  Offset 00aa (0x00aa): 10 48 10
+  Offset 00ab (0x00ab): df 1b df
+  Offset 00ac (0x00ac): 72 24 72
+  Offset 00ad (0x00ad): fc eb fc
+  Offset 00ae (0x00ae): 0a 34 0a
+  Offset 00af (0x00af): 62 9d 62
+  Offset 00b0 (0x00b0): d3 08 d3
+  Offset 00b1 (0x00b1): 2d 83 2d
+  Offset 00b2 (0x00b2): 10 96 10
+  Offset 00b3 (0x00b3): df 0d df
+  Offset 00b4 (0x00b4): 72 a9 72
+  Offset 00b5 (0x00b5): fc e0 fc
+  Offset 00b6 (0x00b6): 0a bf 0a
+  Offset 00b7 (0x00b7): 62 67 62
+  Offset 00b8 (0x00b8): d3 08 d3
+  Offset 00b9 (0x00b9): 2d 83 2d
+  Offset 00ba (0x00ba): 10 96 10
+  Offset 00bb (0x00bb): df 0d df
+  Offset 00bc (0x00bc): 72 a9 72
+  Offset 00bd (0x00bd): fc e0 fc
+  Offset 00be (0x00be): 0a bf 0a
+  Offset 00bf (0x00bf): 62 67 62
+  Offset 00c0 (0x00c0): d3 08 d3
+  Offset 00c1 (0x00c1): 2d 83 2d
+  Offset 00c2 (0x00c2): 10 96 10
+  Offset 00c3 (0x00c3): df 0d df
+  Offset 00c4 (0x00c4): 72 a9 72
+  Offset 00c5 (0x00c5): fc e0 fc
+  Offset 00c6 (0x00c6): 0a bf 0a
+  Offset 00c7 (0x00c7): 62 67 62
+  Offset 00c8 (0x00c8): d3 08 d3
+  Offset 00c9 (0x00c9): 2d 83 2d
+  Offset 00ca (0x00ca): 10 96 10
+  Offset 00cb (0x00cb): df 0d df
+  Offset 00cc (0x00cc): 72 a9 72
+  Offset 00cd (0x00cd): fc e0 fc
+  Offset 00ce (0x00ce): 0a bf 0a
+  Offset 00cf (0x00cf): 62 67 62
+  Offset 00d0 (0x00d0): d3 08 d3
+  Offset 00d1 (0x00d1): 2d 83 2d
+  Offset 00d2 (0x00d2): 10 96 10
+  Offset 00d3 (0x00d3): df 0d df
+  Offset 00d4 (0x00d4): 72 a9 72
+  Offset 00d5 (0x00d5): fc e0 fc
+  Offset 00d6 (0x00d6): 0a bf 0a
+  Offset 00d7 (0x00d7): 62 67 62
+  Offset 00d8 (0x00d8): d3 08 d3
+  Offset 00d9 (0x00d9): 2d 83 2d
+  Offset 00da (0x00da): 10 96 10
+  Offset 00db (0x00db): df 0d df
+  Offset 00dc (0x00dc): 72 a9 72
+  Offset 00dd (0x00dd): fc e0 fc
+  Offset 00de (0x00de): 0a bf 0a
+  Offset 00df (0x00df): 62 67 62
+  Offset 00e0 (0x00e0): d3 08 d3
+  Offset 00e1 (0x00e1): 2d 83 2d
+  Offset 00e2 (0x00e2): 10 96 10
+  Offset 00e3 (0x00e3): df 0d df
+  Offset 00e4 (0x00e4): 72 a9 72
+  Offset 00e5 (0x00e5): fc e0 fc
+  Offset 00e6 (0x00e6): 0a bf 0a
+  Offset 00e7 (0x00e7): 62 67 62
+  Offset 00e8 (0x00e8): d3 08 d3
+  Offset 00e9 (0x00e9): 2d 83 2d
+  Offset 00ea (0x00ea): 10 96 10
+  Offset 00eb (0x00eb): df 0d df
+  Offset 00ec (0x00ec): 72 a9 72
+  Offset 00ed (0x00ed): fc e0 fc
+  Offset 00ee (0x00ee): 0a bf 0a
+  Offset 00ef (0x00ef): 62 67 62
+  Offset 00f0 (0x00f0): d3 08 d3
+  Offset 00f1 (0x00f1): 2d 83 2d
+  Offset 00f2 (0x00f2): 10 96 10
+  Offset 00f3 (0x00f3): df 0d df
+  Offset 00f4 (0x00f4): 72 a9 72
+  Offset 00f5 (0x00f5): fc e0 fc
+  Offset 00f6 (0x00f6): 0a bf 0a
+  Offset 00f7 (0x00f7): 62 67 62
+  Offset 00f8 (0x00f8): 2b 10 2b
+  Offset 00f9 (0x00f9): 0b 37 0b
+  Offset 00fa (0x00fa): fe 8c fe
+  Offset 00fb (0x00fb): 5b 70 5b
+  Offset 00fc (0x00fc): ba 09 ba
+  Offset 00fd (0x00fd): d3 0f d3
+  Offset 00fe (0x00fe): 22 74 22
+  Offset 00ff (0x00ff): 64 65 64
+  Offset 0128 (0x0128): 27 54 27
+  Offset 0129 (0x0129): f6 1a f6
+  Offset 012a (0x012a): a3 39 a3
+  Offset 012b (0x012b): 5d 5c 5d
+  Offset 012c (0x012c): d2 67 d2
+  Offset 012d (0x012d): 03 64 03
+  Offset 012e (0x012e): c0 bd c0
+  Offset 012f (0x012f): e1 ff e1
+  Offset 0130 (0x0130): 27 b7 27
+  Offset 0131 (0x0131): f6 2c f6
+  Offset 0132 (0x0132): a3 7f a3
+  Offset 0133 (0x0133): 5d df 5d
+  Offset 0134 (0x0134): d2 4e d2
+  Offset 0135 (0x0135): 03 f2 03
+  Offset 0136 (0x0136): c0 4a c0
+  Offset 0137 (0x0137): e1 41 e1
+  Offset 01b0 (0x01b0): 27 16 27
+  Offset 01b1 (0x01b1): f6 b0 f6
+  Offset 01b2 (0x01b2): a3 18 a3
+  Offset 01b3 (0x01b3): 5d 20 5d
+  Offset 01b4 (0x01b4): d2 4c d2
+  Offset 01b5 (0x01b5): 03 35 03
+  Offset 01b6 (0x01b6): c0 16 c0
+  Offset 01b7 (0x01b7): e1 19 e1
+  Offset 0230 (0x0230): 27 54 27
+  Offset 0231 (0x0231): f6 1a f6
+  Offset 0232 (0x0232): a3 39 a3
+  Offset 0233 (0x0233): 5d 5c 5d
+  Offset 0234 (0x0234): d2 67 d2
+  Offset 0235 (0x0235): 03 64 03
+  Offset 0236 (0x0236): c0 bd c0
+  Offset 0237 (0x0237): e1 ff e1
+  Offset 0238 (0x0238): 27 b7 27
+  Offset 0239 (0x0239): f6 2c f6
+  Offset 023a (0x023a): a3 7f a3
+  Offset 023b (0x023b): 5d df 5d
+  Offset 023c (0x023c): d2 4e d2
+  Offset 023d (0x023d): 03 f2 03
+  Offset 023e (0x023e): c0 4a c0
+  Offset 023f (0x023f): e1 41 e1
+  Offset 02b8 (0x02b8): 27 16 27
+  Offset 02b9 (0x02b9): f6 b0 f6
+  Offset 02ba (0x02ba): a3 18 a3
+  Offset 02bb (0x02bb): 5d 20 5d
+  Offset 02bc (0x02bc): d2 4c d2
+  Offset 02bd (0x02bd): 03 35 03
+  Offset 02be (0x02be): c0 16 c0
+  Offset 02bf (0x02bf): e1 19 e1
+  Offset 0338 (0x0338): 27 54 27
+  Offset 0339 (0x0339): f6 1a f6
+  Offset 033a (0x033a): a3 39 a3
+  Offset 033b (0x033b): 5d 5c 5d
+  Offset 033c (0x033c): d2 67 d2
+  Offset 033d (0x033d): 03 64 03
+  Offset 033e (0x033e): c0 bd c0
+  Offset 033f (0x033f): e1 ff e1
+  Offset 0340 (0x0340): 27 b7 27
+  Offset 0341 (0x0341): f6 2c f6
+  Offset 0342 (0x0342): a3 7f a3
+  Offset 0343 (0x0343): 5d df 5d
+  Offset 0344 (0x0344): d2 4e d2
+  Offset 0345 (0x0345): 03 f2 03
+  Offset 0346 (0x0346): c0 4a c0
+  Offset 0347 (0x0347): e1 41 e1
+  Offset 03c0 (0x03c0): 27 16 27
+  Offset 03c1 (0x03c1): f6 b0 f6
+  Offset 03c2 (0x03c2): a3 18 a3
+  Offset 03c3 (0x03c3): 5d 20 5d
+  Offset 03c4 (0x03c4): d2 4c d2
+  Offset 03c5 (0x03c5): 03 35 03
+  Offset 03c6 (0x03c6): c0 16 c0
+  Offset 03c7 (0x03c7): e1 19 e1
+  Offset 0440 (0x0440): 27 54 27
+  Offset 0441 (0x0441): f6 1a f6
+  Offset 0442 (0x0442): a3 39 a3
+  Offset 0443 (0x0443): 5d 5c 5d
+  Offset 0444 (0x0444): d2 67 d2
+  Offset 0445 (0x0445): 03 64 03
+  Offset 0446 (0x0446): c0 bd c0
+  Offset 0447 (0x0447): e1 ff e1
+  Offset 0448 (0x0448): 27 b7 27
+  Offset 0449 (0x0449): f6 2c f6
+  Offset 044a (0x044a): a3 7f a3
+  Offset 044b (0x044b): 5d df 5d
+  Offset 044c (0x044c): d2 4e d2
+  Offset 044d (0x044d): 03 f2 03
+  Offset 044e (0x044e): c0 4a c0
+  Offset 044f (0x044f): e1 41 e1
+  Offset 04c8 (0x04c8): 27 16 27
+  Offset 04c9 (0x04c9): f6 b0 f6
+  Offset 04ca (0x04ca): a3 18 a3
+  Offset 04cb (0x04cb): 5d 20 5d
+  Offset 04cc (0x04cc): d2 4c d2
+  Offset 04cd (0x04cd): 03 35 03
+  Offset 04ce (0x04ce): c0 16 c0
+  Offset 04cf (0x04cf): e1 19 e1
+  Offset 0548 (0x0548): 27 54 27
+  Offset 0549 (0x0549): f6 1a f6
+  Offset 054a (0x054a): a3 39 a3
+  Offset 054b (0x054b): 5d 5c 5d
+  Offset 054c (0x054c): d2 67 d2
+  Offset 054d (0x054d): 03 64 03
+  Offset 054e (0x054e): c0 bd c0
+  Offset 054f (0x054f): e1 ff e1
+  Offset 0550 (0x0550): 27 b7 27
+  Offset 0551 (0x0551): f6 2c f6
+  Offset 0552 (0x0552): a3 7f a3
+  Offset 0553 (0x0553): 5d df 5d
+  Offset 0554 (0x0554): d2 4e d2
+  Offset 0555 (0x0555): 03 f2 03
+  Offset 0556 (0x0556): c0 4a c0
+  Offset 0557 (0x0557): e1 41 e1
+  Offset 05d0 (0x05d0): 27 16 27
+  Offset 05d1 (0x05d1): f6 b0 f6
+  Offset 05d2 (0x05d2): a3 18 a3
+  Offset 05d3 (0x05d3): 5d 20 5d
+  Offset 05d4 (0x05d4): d2 4c d2
+  Offset 05d5 (0x05d5): 03 35 03
+  Offset 05d6 (0x05d6): c0 16 c0
+  Offset 05d7 (0x05d7): e1 19 e1
+  Offset 0650 (0x0650): 27 54 27
+  Offset 0651 (0x0651): f6 1a f6
+  Offset 0652 (0x0652): a3 39 a3
+  Offset 0653 (0x0653): 5d 5c 5d
+  Offset 0654 (0x0654): d2 67 d2
+  Offset 0655 (0x0655): 03 64 03
+  Offset 0656 (0x0656): c0 bd c0
+  Offset 0657 (0x0657): e1 ff e1
+  Offset 0658 (0x0658): 27 b7 27
+  Offset 0659 (0x0659): f6 2c f6
+  Offset 065a (0x065a): a3 7f a3
+  Offset 065b (0x065b): 5d df 5d
+  Offset 065c (0x065c): d2 4e d2
+  Offset 065d (0x065d): 03 f2 03
+  Offset 065e (0x065e): c0 4a c0
+  Offset 065f (0x065f): e1 41 e1
+  Offset 06d8 (0x06d8): 27 16 27
+  Offset 06d9 (0x06d9): f6 b0 f6
+  Offset 06da (0x06da): a3 18 a3
+  Offset 06db (0x06db): 5d 20 5d
+  Offset 06dc (0x06dc): d2 4c d2
+  Offset 06dd (0x06dd): 03 35 03
+  Offset 06de (0x06de): c0 16 c0
+  Offset 06df (0x06df): e1 19 e1
+  Offset 0758 (0x0758): 27 54 27
+  Offset 0759 (0x0759): f6 1a f6
+  Offset 075a (0x075a): a3 39 a3
+  Offset 075b (0x075b): 5d 5c 5d
+  Offset 075c (0x075c): d2 67 d2
+  Offset 075d (0x075d): 03 64 03
+  Offset 075e (0x075e): c0 bd c0
+  Offset 075f (0x075f): e1 ff e1
+  Offset 0760 (0x0760): 27 b7 27
+  Offset 0761 (0x0761): f6 2c f6
+  Offset 0762 (0x0762): a3 7f a3
+  Offset 0763 (0x0763): 5d df 5d
+  Offset 0764 (0x0764): d2 4e d2
+  Offset 0765 (0x0765): 03 f2 03
+  Offset 0766 (0x0766): c0 4a c0
+  Offset 0767 (0x0767): e1 41 e1
+  Offset 07e0 (0x07e0): 27 16 27
+  Offset 07e1 (0x07e1): f6 b0 f6
+  Offset 07e2 (0x07e2): a3 18 a3
+  Offset 07e3 (0x07e3): 5d 20 5d
+  Offset 07e4 (0x07e4): d2 4c d2
+  Offset 07e5 (0x07e5): 03 35 03
+  Offset 07e6 (0x07e6): c0 16 c0
+  Offset 07e7 (0x07e7): e1 19 e1
+  Offset 0860 (0x0860): 27 54 27
+  Offset 0861 (0x0861): f6 1a f6
+  Offset 0862 (0x0862): a3 39 a3
+  Offset 0863 (0x0863): 5d 5c 5d
+  Offset 0864 (0x0864): d2 67 d2
+  Offset 0865 (0x0865): 03 64 03
+  Offset 0866 (0x0866): c0 bd c0
+  Offset 0867 (0x0867): e1 ff e1
+  Offset 0868 (0x0868): 27 b7 27
+  Offset 0869 (0x0869): f6 2c f6
+  Offset 086a (0x086a): a3 7f a3
+  Offset 086b (0x086b): 5d df 5d
+  Offset 086c (0x086c): d2 4e d2
+  Offset 086d (0x086d): 03 f2 03
+  Offset 086e (0x086e): c0 4a c0
+  Offset 086f (0x086f): e1 41 e1
+  Offset 13d8 (0x13d8): 00 00 6d
+  Offset 13d9 (0x13d9): f7 f7 ef
+  Offset 13da (0x13da): 36 36 b3
+  Offset 13db (0x13db): f3 f3 e0
+  Offset 13dc (0x13dc): 88 88 3a
+  Offset 13dd (0x13dd): 94 94 3e
+  Offset 13de (0x13de): 69 69 ca
+  Offset 13df (0x13df): 06 06 87
+  Offset 13e0 (0x13e0): 00 00 1b
+  Offset 13e1 (0x13e1): f7 f7 07
+  Offset 13e2 (0x13e2): 36 36 8e
+  Offset 13e3 (0x13e3): f3 f3 02
+  Offset 13e4 (0x13e4): 88 88 69
+  Offset 13e5 (0x13e5): 94 94 3e
+  Offset 13e6 (0x13e6): 69 69 2d
+  Offset 13e7 (0x13e7): 06 06 e7
+  Offset 13e8 (0x13e8): fe de 2b
+  Offset 13e9 (0x13e9): 2b 23 41
+  Offset 13ea (0x13ea): 58 f6 00
+  Offset 13eb (0x13eb): 1b 3c 8b
+  Offset 13ec (0x13ec): 1a df 96
+  Offset 13ed (0x13ed): 3f fa d0
+  Offset 13ee (0x13ee): 38 f5 8e
+  Offset 13ef (0x13ef): f6 fb ba
+  Offset 13f0 (0x13f0): ec 39 ec
+  Offset 13f1 (0x13f1): 6c 11 6c
+  Offset 13f2 (0x13f2): d6 cb d6
+  Offset 13f3 (0x13f3): c7 13 c7
+  Offset 13f4 (0x13f4): 74 4d 74
+  Offset 13f5 (0x13f5): a4 dc a4
+  Offset 13f6 (0x13f6): 36 b2 36
+  Offset 13f7 (0x13f7): 54 80 54
+  Offset 13f8 (0x13f8): 79 79 c2
+  Offset 13f9 (0x13f9): 7f 7f f5
+  Offset 13fa (0x13fa): cc cc ef
+  Offset 13fb (0x13fb): d4 d4 aa
+  Offset 13fc (0x13fc): 90 90 b1
+  Offset 13fd (0x13fd): c6 c6 09
+  Offset 13fe (0x13fe): 73 73 1e
+  Offset 13ff (0x13ff): 47 47 93
+  Offset 1400 (0x1400): 00 00 89
+  Offset 1401 (0x1401): f7 f7 b7
+  Offset 1402 (0x1402): 36 36 24
+  Offset 1403 (0x1403): f3 f3 55
+  Offset 1404 (0x1404): 88 88 6f
+  Offset 1405 (0x1405): 94 94 46
+  Offset 1406 (0x1406): 69 69 5d
+  Offset 1407 (0x1407): 06 06 ef
+  Offset 1888 (0x1888): a6 7d 95
+  Offset 1889 (0x1889): c7 b1 1d
+  Offset 188a (0x188a): 1f dc 30
+  Offset 188b (0x188b): b0 19 01
+  Offset 188c (0x188c): 4b 21 32
+  Offset 188d (0x188d): 3e 08 bd
+  Offset 188e (0x188e): 98 8d d1
+  Offset 188f (0x188f): 78 08 cb
+  Offset 1890 (0x1890): cd 22 f0
+  Offset 1891 (0x1891): 8a 89 be
+  Offset 1892 (0x1892): ed b9 03
+  Offset 1893 (0x1893): 9a 9d 31
+  Offset 1894 (0x1894): 06 52 15
+  Offset 1895 (0x1895): 35 eb 1b
+  Offset 1896 (0x1896): 9f e3 44
+  Offset 1897 (0x1897): ff ef 7a
+  Offset 1898 (0x1898): cb 82 32
+  Offset 1899 (0x1899): 26 c4 28
+  Offset 189a (0x189a): 47 95 d6
+  Offset 189b (0x189b): c9 6f af
+  Offset 189c (0x189c): e5 25 12
+  Offset 189d (0x189d): ee 74 12
+  Offset 189e (0x189e): 25 76 e5
+  Offset 189f (0x189f): 40 46 9e
+  Offset 18a0 (0x18a0): 05 8b ea
+  Offset 18a1 (0x18a1): a4 d8 08
+  Offset 18a2 (0x18a2): cd c8 a7
+  Offset 18a3 (0x18a3): 59 20 66
+  Offset 18a4 (0x18a4): bb bc 84
+  Offset 18a5 (0x18a5): 88 e3 bb
+  Offset 18a6 (0x18a6): a4 3d e5
+  Offset 18a7 (0x18a7): 49 9e 55
+  Offset 18a8 (0x18a8): 44 a6 11
+  Offset 18a9 (0x18a9): ab 01 f6
+  Offset 18aa (0x18aa): d9 da 1b
+  Offset 18ab (0x18ab): fc d0 84
+  Offset 18ac (0x18ac): 34 2a 2f
+  Offset 18ad (0x18ad): cf 97 7d
+  Offset 18ae (0x18ae): da d6 f5
+  Offset 18af (0x18af): 54 19 c2
+  Offset 18b0 (0x18b0): 8d d3 f0
+  Offset 18b1 (0x18b1): b2 70 32
+  Offset 18b2 (0x18b2): 3c ee 39
+  Offset 18b3 (0x18b3): 1e 2d ce
+  Offset 18b4 (0x18b4): e8 47 84
+  Offset 18b5 (0x18b5): a6 6d f9
+  Offset 18b6 (0x18b6): f1 04 c2
+  Offset 18b7 (0x18b7): 01 27 41
+  Offset 18b8 (0x18b8): c4 db 57
+  Offset 18b9 (0x18b9): d2 4f 20
+  Offset 18ba (0x18ba): 28 28 59
+  Offset 18bb (0x18bb): ab 60 3b
+  Offset 18bc (0x18bc): a7 eb 4d
+  Offset 18bd (0x18bd): ea 63 4f
+  Offset 18be (0x18be): 7f fb 00
+  Offset 18bf (0x18bf): 4c 11 e5
+  Offset 18c0 (0x18c0): aa 50 bf
+  Offset 18c1 (0x18c1): d7 42 ce
+  Offset 18c2 (0x18c2): 85 b9 db
+  Offset 18c3 (0x18c3): e2 08 84
+  Offset 18c4 (0x18c4): 77 eb f6
+  Offset 18c5 (0x18c5): f7 99 74
+  Offset 18c6 (0x18c6): 9c a4 c9
+  Offset 18c7 (0x18c7): 8d dc 1d
+  Offset 18c8 (0x18c8): 7e eb 7b
+  Offset 18c9 (0x18c9): c9 ec 35
+  Offset 18ca (0x18ca): d1 06 48
+  Offset 18cb (0x18cb): cf a2 64
+  Offset 18cc (0x18cc): ff b0 70
+  Offset 18cd (0x18cd): e9 ad 5e
+  Offset 18ce (0x18ce): 4e 89 c3
+  Offset 18cf (0x18cf): 81 b9 6b
+  Offset 18d0 (0x18d0): 3d 1d 52
+  Offset 18d1 (0x18d1): 77 3d 92
+  Offset 18d2 (0x18d2): 95 fc da
+  Offset 18d3 (0x18d3): 26 03 c9
+  Offset 18d4 (0x18d4): 5a 8a b3
+  Offset 18d5 (0x18d5): f5 33 e4
+  Offset 18d6 (0x18d6): e0 9d c3
+  Offset 18d7 (0x18d7): 13 6b ea
+
+Total different bytes: 456 / 6360

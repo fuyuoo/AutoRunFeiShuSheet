@@ -1,0 +1,160 @@
+# TDX Formula Reverse Engineering - Investigation Findings
+# Date: 2026-04-20
+# TDX Installation: D:\tdx\
+
+## 1. FILES IN D:\tdx\T0002\
+
+### Binary Data Files
+- PriCS.dat (802,604 bytes) - Compiled formula PARAMETERS (constant size)
+- PriGS.dat (285,835 bytes) - System formula definitions (grows over time)
+- PriLoc.dat (2,296 bytes) - Formula metadata/index (maps names to PriGS.dat offsets)
+- PriPack.dat (1,424 bytes) - Indicator display config (MACD, MA, VOL-TDX, DDE, SUP, etc.)
+- PriPack_def.dat (1,424 bytes) - Identical to PriPack.dat
+
+### Configuration Files
+- user.ini (25,922 bytes) - User settings, favorite indicators, session tokens
+- connect.cfg (13,396 bytes) - Server connection config, 43 hosts, port 7709
+- bigdata_all.txt (3,176 bytes) - Lists ~400+ TDX indicator/formula ASCII codes
+
+### Backup Directory
+- gs_bak/ - Daily backups from 20260322 through 20260420
+- Shows PriGS.dat growth: 219KB (20260322) -> 285KB (current)
+- Files: PriCS.dat, PriGS.dat, PriLoc.dat, PriPack.dat, ZXG.blk, blocknew.cfg, tdxline.dat
+
+### Empty/Stub Directories
+- User/ - Contains user ID subdirs, all empty
+- dlls/ - Empty
+- evalexp/ - Has config files but num=0 formulas
+- signals/ - Empty datacfg.dat and extern_user.txt
+
+### NOT Found
+- No .tn6, .tne, .tni files anywhere in TDX installation
+- No formula source code files (.txt, .xml, .json with formulas)
+- No decompiler tool or utility
+
+## 2. PriCS.dat ANALYSIS (802,604 bytes)
+
+- CONSTANT file size - stores compiled formula parameters, NOT source code
+- Header: 05 00 00 00 7c 01 df 00 6b 00 0f 00 23 00 00 00
+- Contains M1-M8 named parameter blocks with IEEE 754 float values
+- Each M-block has 20+ float parameters (M1 at 0x0030, M2 at 0x00B0, etc.)
+- Readable parameter names: M1-M8, SHORT, LONG, MID, AVGLENGTH, ATRLENGTH, NMIN1, NMIN2, STEP, MAXP
+- GBK Chinese characters partially visible but garbled in binary
+- Conclusion: Parameter/settings storage, NOT formula source
+
+## 3. PriGS.dat ANALYSIS (285,835 bytes)
+
+- GROWS as formulas are added (tracked via gs_bak/ backups)
+- Contains Chinese formula names in GBK encoding
+- Header: 05 27 00 00 00 bb 01 00 00 6b 06 03 00 20 56 01
+
+### 22 Formulas Identified (name @ byte_offset):
+@10580:  KDJ - 显示J
+@41012:  B1选股MAX20
+@71444:  B2
+@76516:  B2修改
+@81598:  B2MAX
+@86660:  深V点30
+@112020: MACD - 浪
+@122164: 睡牛战法
+@127236: 睡牛市值
+@132308: 骑牛登山新
+@137380: 标准B1
+@142452: 25线上
+@147524: B1
+@152596: 自用选股
+@157668: 骑牛旧
+@162740: 原本B1
+@167812: MACD五浪二浪
+@172884: B2
+@177966: B1_CHECK
+@183028: B2_CHECK
+@188100: 骑牛_CHECK
+@193172: 宝妈战法
+
+- Contains address-like references with %5 patterns (e.g., 8b01 3501, bf00 3501, c100 3501)
+- These are likely compiled bytecode offsets, not readable source
+
+## 4. PriLoc.dat ANALYSIS (2,296 bytes)
+
+- Formula metadata/index file
+- Records appear to be 48 bytes (0x30) each with name + offset pairs
+- Each record has a 2-byte reference into PriGS.dat
+- Names decoded: 选牛深圳, 打底仓, KDJ显示J, 骑牛战法, 骑牛旧, 标准B1, MACD, B2, B2修改, B2MAX, 深V点30, 新单骑, 骑牛旧B1, 骑牛B1, 骑牛B1_CHECK, B2_CHECK, 骑牛_CHECK, 宝妈战法
+
+## 5. .cos FILES (94 bytes each)
+
+- b1_check.cos: Header 00 02 00 00 01 00 00 00, name "B1_CHECK", 3 float params
+- b2_check.cos: Same header, name "B2_CHECK", 3 float params
+- 宝妈战法.cos: Same header, name field all zeros (uninitialized or stored differently)
+- Structure: bytes 0-1 = version (512), bytes 2-3 = 0, bytes 4-7 = flags (1), bytes 8-23 = name (GBK, 16 bytes), bytes 24+ = params, last 4 bytes = 4
+- These are simple binary parameter snapshots, NOT formula source code
+
+## 6. DLL/EXECUTABLE ANALYSIS
+
+### TdxW.exe (17MB) - Main TDX executable
+- Contains formula-related strings:
+  - "formula", "evalexp", "downloadformula", "deleteformula"
+  - "uploadformula", "shareformula", "shareformula2"
+  - "precompiled chunk", "in main chunk"
+  - "chunk has too many lines", "chunk has too many syntax levels"
+  - "CFormulaPackDlg", "TEvalExp", "ID_FORMULA", "Formula%02d"
+- Shows formula creation workflow: download -> compile -> store -> share
+
+### TCalc64.dll (3,518,360 bytes) - Formula calculation engine
+- MFC-based library
+- Contains math functions: sqrt, expf, logf, sqrtf, memset
+- This is the compiled formula execution engine
+
+### TEvalExp.dll (753,048 bytes) - Expression evaluator
+- Referenced by TdxW.exe for formula evaluation
+- Handles formula parsing and evaluation
+
+### TQQCalc64.dll (37,216 bytes)
+- Exports: TQQCalc_Index, TQQCalc_Lsbdl, TQQCalc_Lsbdl_Model, TQQCalc_Yhbdl
+- DigiCert signed by "Shenzhen Fortune Trend technology Co., Ltd"
+- Specialized calculation module (possibly for QQ/Tencent-related features)
+
+## 7. .tn6 FORMAT ANALYSIS (from temp/ files)
+
+### File: 123.tn6 (44,752 bytes)
+- 64-byte record structure (699 records + 16 byte remainder)
+- 8-byte null placeholder pattern: 00f736f388946906
+- 8-byte marker pattern: 234b04de8ac7eb38 (marks record boundaries)
+
+### Record Type Classification:
+- Records starting with marker (234b04de8ac7eb38): formula entry points
+- Records starting with null pattern (00f736f388946906): unused/empty slots
+- Records starting with zeros: all-zero blocks
+- Mixed records: actual compiled formula data
+
+### XOR Decoding Attempts:
+- XOR with null pattern key did NOT reveal readable source code
+- Encoding is more complex than simple XOR
+- The null pattern (00f736f388946906) itself XORs to f7c0060547064132 - not meaningful
+
+### Key Insight:
+The .tn6 file contains compiled/formula-processed data, NOT source code text.
+The formula source code is stored in the TDX application's internal memory/files
+and compiled on-the-fly by TEvalExp.dll + TCalc64.dll when formulas are loaded.
+
+## 8. CONCLUSIONS
+
+1. **No formula source code exists as readable text** anywhere in the TDX installation
+2. **PriGS.dat contains compiled bytecode** - the closest thing to "formula code" but in proprietary binary format
+3. **The formula compiler lives in TEvalExp.dll + TCalc64.dll**, invoked by TdxW.exe
+4. **.tn6 files are export artifacts** created through the TDX UI, not stored in the installation
+5. **To decompile formulas**, one would need to:
+   - Reverse-engineer the TCalc64.dll bytecode format
+   - Or capture formulas in source form from TDX's editor before compilation
+   - Or use TDX's built-in "formula sharing" features to export readable versions
+6. **The gs_bak/ backups** are the best way to track formula changes over time
+7. **.cos files** are simple parameter snapshots (94 bytes), useful for tracking parameter changes
+
+## 9. RECOMMENDATIONS FOR FURTHER WORK
+
+- Use TDX's built-in formula export/sharing features to get readable source
+- Monitor gs_bak/ for daily formula backups
+- The .tn6 format may be decipherable by comparing source + compiled versions
+- Consider using IDA Pro/Ghidra on TCalc64.dll to understand the bytecode format
+- The "downloadformula"/"uploadformula" strings in TdxW.exe suggest network-based formula transfer
