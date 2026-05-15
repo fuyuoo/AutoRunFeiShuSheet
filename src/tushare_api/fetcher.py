@@ -177,6 +177,12 @@ class TushareDataFetcher:
 
         # 标准化列名和排序
         df = df.sort_values("trade_date").reset_index(drop=True)
+
+        # pro_bar 返回的 pct_chg 来自原始 daily 表（未复权），除权日会失真。
+        # 用前复权 close 跨行重新计算，才是真正的前复权日涨幅。
+        if adj == "qfq" and "close" in df.columns and len(df) >= 2:
+            df["pct_chg"] = (df["close"].pct_change() * 100).round(4)
+
         return df
 
     def get_etf_daily(
@@ -323,33 +329,92 @@ class TushareDataFetcher:
         type_lower = security_type.lower() if security_type else ""
 
         if type_lower in ["股票", "stock"]:
-            df = self.get_stock_daily(ts_code, start_date, end_date, days)
+            primary = "stock"
         elif type_lower in ["etf", "基金"]:
-            df = self.get_etf_daily(ts_code, start_date, end_date, days)
+            primary = "etf"
         elif type_lower in ["板块", "指数", "index"]:
-            df = self.get_index_daily(ts_code, start_date, end_date, days)
+            primary = "index"
         elif type_lower in ["港股", "hk", "hstock"]:
-            df = self.get_hk_daily(ts_code, start_date, end_date, days)
+            primary = "hk"
         else:
-            # 尝试自动识别
-            detected_type = self.detect_security_type(ts_code)
-            if detected_type == "stock":
-                df = self.get_stock_daily(ts_code, start_date, end_date, days)
-            elif detected_type == "etf":
-                df = self.get_etf_daily(ts_code, start_date, end_date, days)
-            elif detected_type == "index":
-                df = self.get_index_daily(ts_code, start_date, end_date, days)
-            elif detected_type == "hk":
-                df = self.get_hk_daily(ts_code, start_date, end_date, days)
-            else:
-                # 默认尝试股票接口
-                df = self.get_stock_daily(ts_code, start_date, end_date, days)
+            detected = self.detect_security_type(ts_code)
+            primary = detected if detected != "unknown" else "stock"
+
+        # 按主类型 + 兜底顺序依次尝试，覆盖 Tushare 不同接口对个别标的的覆盖差异
+        # 例如新上市 ETF 在 fund_daily 缺失时，可以通过 pro_bar(asset='FD') 拿到
+        attempt_order = self._build_attempt_order(primary)
+        df = None
+        for method_name in attempt_order:
+            try:
+                df = self._fetch_by_method(method_name, ts_code, start_date, end_date, days)
+            except Exception as e:
+                # 单个接口异常不应阻塞兜底，但保留打印便于排查
+                print(f"    ℹ️  {ts_code} 接口 {method_name} 异常: {e}")
+                df = None
+                continue
+            if df is not None and not df.empty:
+                if method_name != attempt_order[0]:
+                    print(f"    ℹ️  {ts_code} 主接口无数据，已通过兜底接口 {method_name} 获取")
+                break
+
+        if df is None:
+            import pandas as _pd
+            df = _pd.DataFrame()
 
         # 保存缓存
         if not df.empty:
             self._save_cache(df, ts_code, "daily")
 
         return df
+
+    def _build_attempt_order(self, primary: str) -> list:
+        """构造接口尝试顺序：主类型在前，其余作为兜底"""
+        all_methods = {
+            "stock": ["stock_daily", "pro_bar_fd", "etf_daily", "index_daily"],
+            "etf": ["etf_daily", "pro_bar_fd", "stock_daily", "index_daily"],
+            "index": ["index_daily", "stock_daily", "etf_daily"],
+            "hk": ["hk_daily"],
+        }
+        return all_methods.get(primary, ["stock_daily", "etf_daily", "index_daily"])
+
+    def _fetch_by_method(
+        self,
+        method_name: str,
+        ts_code: str,
+        start_date: Optional[str],
+        end_date: Optional[str],
+        days: int,
+    ) -> pd.DataFrame:
+        """按方法名调用对应接口"""
+        if method_name == "stock_daily":
+            return self.get_stock_daily(ts_code, start_date, end_date, days)
+        if method_name == "etf_daily":
+            return self.get_etf_daily(ts_code, start_date, end_date, days)
+        if method_name == "index_daily":
+            return self.get_index_daily(ts_code, start_date, end_date, days)
+        if method_name == "hk_daily":
+            return self.get_hk_daily(ts_code, start_date, end_date, days)
+        if method_name == "pro_bar_fd":
+            # ETF 兜底：用 pro_bar(asset='FD')，对 fund_daily 缺失的 ETF 仍可拿到数据
+            if not end_date:
+                end_date = datetime.now().strftime("%Y%m%d")
+            if not start_date:
+                start_date = (datetime.now() - timedelta(days=days * 2)).strftime("%Y%m%d")
+            df = ts.pro_bar(
+                ts_code=ts_code,
+                asset="FD",
+                start_date=start_date,
+                end_date=end_date,
+                api=self.pro,
+            )
+            if df is None or df.empty:
+                return pd.DataFrame()
+            df = df.sort_values("trade_date").reset_index(drop=True)
+            # 与 fund_daily 结构对齐：若没有 pct_chg，从 close 计算
+            if "pct_chg" not in df.columns and "close" in df.columns and len(df) >= 2:
+                df["pct_chg"] = (df["close"].pct_change() * 100).round(4)
+            return df
+        return pd.DataFrame()
 
     def detect_security_type(self, ts_code: str) -> Literal["stock", "etf", "index", "hk", "unknown"]:
         """
